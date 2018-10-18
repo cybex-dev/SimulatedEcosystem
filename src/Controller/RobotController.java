@@ -3,9 +3,9 @@ package Controller;
 import MotionSimulator.Command;
 
 public abstract class RobotController implements PathFunction, Chromosome<Command> {
-    GeneticAlgorithm<Movements> geneticAlgorithm = new GeneticAlgorithm<>();
+    GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
 
-    public RobotController(GeneticAlgorithm<Movements> geneticAlgorithm) {
+    public RobotController(GeneticAlgorithm geneticAlgorithm) {
         this.geneticAlgorithm = geneticAlgorithm;
     }
 
