@@ -9,6 +9,9 @@ public class Movements {
     private ArrayList<Command> commands = new ArrayList<>();
     private Double fitness;
 
+    public Movements() {
+    }
+
     public Movements(List<Command> commands) {
         this.commands = new ArrayList<>(commands);
     }
@@ -27,5 +30,17 @@ public class Movements {
 
     public void setCommand(Command command, int index) {
         this.commands.set(index, command);
+    }
+
+    public Double getFitness() {
+        return fitness;
+    }
+
+    public void setFitness(Double fitness) {
+        this.fitness = fitness;
+    }
+
+    public void setCommands(ArrayList<Command> commands) {
+        this.commands = commands;
     }
 }

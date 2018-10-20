@@ -152,7 +152,10 @@ public class GeneticAlgorithm {
 
     public void generatePopulation() {
         for (int i = 0; i < population.size(); i++) {
-            population.add()
+            Movements movement = new Movements();
+            // generate each command with left/right values and add to movement.
+            // all movements need to be added to the population
+            // this is a controller, where there can be many.
         }
     }
 
