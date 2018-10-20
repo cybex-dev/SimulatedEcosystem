@@ -1,21 +1,29 @@
 package Controller;
 
 import MotionSimulator.Command;
+import MotionSimulator.State;
 import MotionSimulator.TimedCommand;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class GeneticAlgorithm {
 
+    // Writing to file
+    private List<Movements> bestResults = new ArrayList<>();
+
     // Generic Objects
     private Random random = new Random();
     private List<Movements> population;
+
+    // Current optimal indivduals
     private Movements lowest = null;
     private Movements currentLowest = null;
 
@@ -78,6 +86,8 @@ class GeneticAlgorithm {
         List<Movements> sorted = population.stream().parallel().sorted(Movements::compare).collect(Collectors.toList());
         population.clear();
         population.addAll(sorted);
+
+        bestResults.add(lowest);
     }
 
     private Movements mutate(Movements movements) {
@@ -243,5 +253,9 @@ class GeneticAlgorithm {
 
     Movements getLowest() {
         return lowest;
+    }
+
+    List<Movements> getBestResults() {
+        return bestResults;
     }
 }

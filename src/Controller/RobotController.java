@@ -4,6 +4,9 @@ import MotionSimulator.MotionSimulator;
 import MotionSimulator.State;
 import MotionSimulator.TimedCommand;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +18,11 @@ class RobotController {
     private GeneticAlgorithm geneticAlgorithm;
     private MotionSimulator simulator;
     private static final State STATE_INITIAL = new State(0, 0, 0);
+
+    // Logging
+    private PrintWriter writer;
+    private String CARAT = ";";
+    private String ID = "default";
 
     private PathFunction<Movements> fitnessFunction = new PathFunction<Movements>() {
         @Override
@@ -61,8 +69,27 @@ class RobotController {
         geneticAlgorithm = new GeneticAlgorithm(1000, fitnessFunction);
     }
 
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void initLogger() {
+        try {
+            File logger = new File("controller" + ID + ".csv");
+            if (logger.exists())
+                logger.delete();
+            logger.createNewFile();
+
+            writer = new PrintWriter(logger);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     void train(){
         geneticAlgorithm.run();
+
+        initLogger();
+        geneticAlgorithm.getBestResults().forEach(movements -> writer.write(String.valueOf(movements.getFitness()) + CARAT));
+        writer.close();
     }
 
     /**
@@ -81,4 +108,11 @@ class RobotController {
         return simulator.getPath(STATE_INITIAL, new ArrayList<>(getBestSolution().getPopulation()));
     }
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }
