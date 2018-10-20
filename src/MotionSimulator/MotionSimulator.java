@@ -4,6 +4,7 @@ package MotionSimulator;//
 //
 
 import MotionSimulator.NNa.myMain;
+
 import java.util.ArrayList;
 
 public class MotionSimulator {
@@ -48,9 +49,9 @@ public class MotionSimulator {
 
     /**
      * Returns the path travelled by the drone/robot.
-     * @param initial
-     * @param coms
-     * @return
+     * @param initial initial state
+     * @param coms list of commands
+     * @return list of complete states
      */
     public ArrayList<State> getPath(State initial, ArrayList<TimedCommand> coms) {
         this.oldx = 0.0D;
@@ -59,17 +60,14 @@ public class MotionSimulator {
         State curState = initial;
         TimedCommand prevcom = new TimedCommand(new Command(0, 0), 1);
 
-        for(int i = 0; i < coms.size(); ++i) {
-            TimedCommand cur = (TimedCommand)coms.get(i);
-            ArrayList<State> newStates = this.getStates(curState, prevcom, cur);
+        for (TimedCommand com : coms) {
+            ArrayList<State> newStates = this.getStates(curState, prevcom, com);
 
-            for(int k = 0; k < newStates.size(); ++k) {
-                ret.add(newStates.get(k));
-            }
+            ret.addAll(newStates);
 
-            State finals = (State)newStates.get(newStates.size() - 1);
+            State finals = newStates.get(newStates.size() - 1);
             curState = new State(finals.x, finals.y, finals.a);
-            prevcom = new TimedCommand(new Command(cur.c.left, cur.c.right), cur.time);
+            prevcom = new TimedCommand(new Command(com.c.left, com.c.right), com.time);
         }
 
         return ret;

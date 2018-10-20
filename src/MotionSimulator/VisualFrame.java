@@ -3,27 +3,24 @@ package MotionSimulator;//
 // (powered by Fernflower decompiler)
 //
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 public class VisualFrame extends Frame implements Runnable, WindowListener {
-    Thread t;
-    Image buffer;
-    Graphics bg;
-    int x = 0;
-    int y = 0;
-    int angle = 0;
-    int Scale = 1;
-    int BaseUnit = 400;
-    boolean done = false;
-    int pointer = 0;
-    ArrayList<State> path;
+    private Thread t;
+    private Image buffer;
+    private Graphics bg;
+    private int x = 0;
+    private int y = 0;
+    private int angle = 0;
+    private int Scale = 1;
+    private int BaseUnit = 400;
+    private boolean done = false;
+    private int pointer = 0;
+    private ArrayList<State> path;
 
     public  VisualFrame(ArrayList<State> path) {
         this.path = path;
@@ -84,7 +81,7 @@ public class VisualFrame extends Frame implements Runnable, WindowListener {
         this.bg.setColor(new Color(0.0F, 0.0F, 1.0F, 0.5F));
 
         for(int k = 0; k < this.pointer; ++k) {
-            State s = (State)this.path.get(k);
+            State s = this.path.get(k);
             this.x = (int)s.x / this.Scale * this.BaseUnit / 100;
             this.y = (int)s.y / this.Scale * this.BaseUnit / 100;
             this.angle = (int)s.a;
@@ -105,7 +102,7 @@ public class VisualFrame extends Frame implements Runnable, WindowListener {
         this.bg.setColor(Color.red);
         this.bg.fillOval(this.x - 5 + this.getWidth() / 2, -1 * this.y - 5 + this.getHeight() / 2, 10, 10);
         this.bg.drawLine(this.x + this.getWidth() / 2, -1 * this.y + this.getHeight() / 2, (int)((double)(this.x + this.getWidth() / 2) + 40.0D / (double)this.Scale * Math.cos((double)this.angle * 1.0D / 360.0D * 2.0D * 3.141592653589793D)), (int)((double)(-1 * this.y + this.getHeight() / 2) - 40.0D / (double)this.Scale * Math.sin((double)this.angle * 1.0D / 360.0D * 2.0D * 3.141592653589793D)));
-        g.drawImage(this.buffer, 0, 0, (ImageObserver)null);
+        g.drawImage(this.buffer, 0, 0, null);
     }
 
     public void update(Graphics g) {

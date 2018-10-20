@@ -1,12 +1,24 @@
 package Controller;
 
-import MotionSimulator.MotionSimulator;
 import MotionSimulator.VisualFrame;
 
 public class Main {
+
+    private RobotController robotController = new RobotController();
+
     public static void main(String[] args) {
-        MotionSimulator motionSimulator = new MotionSimulator();
-        VisualFrame frame = new VisualFrame(motionSimulator.getPath());
-        motionSimulator.getPath();
+        new Main();
     }
+
+    private Main(){
+        System.out.println("Generating controller");
+        robotController.train();
+        System.out.println("Done!");
+        VisualFrame frame = new VisualFrame(robotController.getBestSolutionStates());
+        System.out.println("Displaying results");
+        frame.run();
+        System.out.println("Done!");
+    }
+
+
 }

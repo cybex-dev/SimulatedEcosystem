@@ -1,46 +1,72 @@
 package Controller;
 
-import MotionSimulator.Command;
+import MotionSimulator.TimedCommand;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movements {
-    private ArrayList<Command> commands = new ArrayList<>();
+public class Movements implements Chromosome<TimedCommand>{
+    private ArrayList<TimedCommand> commands = new ArrayList<>();
     private Double fitness;
 
-    public Movements() {
+    Movements() {
     }
 
-    public Movements(List<Command> commands) {
+    private Movements(List<TimedCommand> commands, Double fitness){
         this.commands = new ArrayList<>(commands);
-    }
-
-    public ArrayList<Command> getCommands() {
-        return commands;
-    }
-
-    public void setCommands(List<Command> commands) {
-        this.commands = new ArrayList<>(commands);
-    }
-
-    public Command getCommand(int index) {
-        return commands.get(index);
-    }
-
-    public void setCommand(Command command, int index) {
-        this.commands.set(index, command);
-    }
-
-    public Double getFitness() {
-        return fitness;
-    }
-
-    public void setFitness(Double fitness) {
         this.fitness = fitness;
     }
 
-    public void setCommands(ArrayList<Command> commands) {
-        this.commands = commands;
+    Movements(List<TimedCommand> commands) {
+        this.commands = new ArrayList<>(commands);
+    }
+
+    public TimedCommand getCommand(int index) {
+        return commands.get(index);
+    }
+
+    public void setCommand(TimedCommand command, int index) {
+        this.commands.set(index, command);
+    }
+
+    public double getFitness() {
+        return fitness;
+    }
+
+    @Override
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
+    }
+
+    @Override
+    public List<TimedCommand> getPopulation() {
+        return commands;
+    }
+
+    @Override
+    public void setPopulation(List<TimedCommand> popList) {
+        this.commands = new ArrayList<>(popList);
+    }
+
+    @Override
+    public TimedCommand getIndividual(int index) {
+        return commands.get(index);
+    }
+
+    @Override
+    public void setPopulation(TimedCommand individual, int index) {
+        this.commands.add(index, individual);
+    }
+
+    void addCommand(TimedCommand timedCommand) {
+        commands.add(timedCommand);
+    }
+
+    static int compare(Movements movements, Movements movements1) {
+        return Double.compare(movements.getFitness(), movements1.getFitness());
+    }
+
+    Movements copy(){
+        return new Movements(new ArrayList<>(commands), fitness);
     }
 }

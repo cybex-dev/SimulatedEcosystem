@@ -11,4 +11,20 @@ public class Command {
         this.left = lin;
         this.right = rin;
     }
+
+    public int getLeft() {
+        return left;
+    }
+
+    public int getRight() {
+        return right;
+    }
+
+    public void setLeft(int left) {
+        this.left = left;
+    }
+
+    public void setRight(int right) {
+        this.right = right;
+    }
 }
