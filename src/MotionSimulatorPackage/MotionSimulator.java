@@ -1,9 +1,9 @@
-package MotionSimulator;//
+package MotionSimulatorPackage;//
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by Fernflower decompiler)
 //
 
-import MotionSimulator.NNa.myMain;
+import MotionSimulatorPackage.NNa.myMain;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,8 @@ public class MotionSimulator {
     private double[][] transform = new double[2][2];
     private double oldx = 0.0D;
     private myMain myA;
-    private MotionSimulator.NNx.myMain myX;
-    private MotionSimulator.NNy.myMain myY;
+    private MotionSimulatorPackage.NNx.myMain myX;
+    private MotionSimulatorPackage.NNy.myMain myY;
 
     public MotionSimulator() {
         this.buildNNs();
@@ -20,20 +20,28 @@ public class MotionSimulator {
 
     private void buildNNs() {
         this.myA = new  myMain();
-        this.myX = new MotionSimulator.NNx.myMain();
-        this.myY = new MotionSimulator.NNy.myMain();
+        this.myX = new MotionSimulatorPackage.NNx.myMain();
+        this.myY = new MotionSimulatorPackage.NNy.myMain();
     }
 
     private ArrayList<State> getStates(State curstate, TimedCommand prevcom, TimedCommand newcom) {
         ArrayList<State> ret = new ArrayList<>();
+
         State cur = new State(curstate.x, curstate.y, curstate.a);
+        this.setInvTransform(cur.a - 90.0D);
+
+        // Create previous and new commands
         Command prev = new Command(prevcom.c.left, prevcom.c.right);
         Command newc = new Command(newcom.c.left, newcom.c.right);
-        this.setInvTransform(cur.a - 90.0D);
+
+        // Create new state position and angle
         State pos = this.getNewXandY(cur, prev, newc);
         double ang = this.getNewA(cur, prev, newc);
         cur = new State(pos.x, pos.y, ang);
+        // Add to list
         ret.add(new State(pos.x, pos.y, ang));
+
+        // Set new previous command to current state
         prev = new Command(newc.left, newc.right);
 
         for(int i = 2; i <= newcom.time; ++i) {

@@ -1,4 +1,4 @@
-package MotionSimulator;//
+package MotionSimulatorPackage;//
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by Fernflower decompiler)
 //
@@ -6,7 +6,6 @@ package MotionSimulator;//
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 public class VisualFrame extends Frame implements Runnable, WindowListener {
@@ -34,7 +33,7 @@ public class VisualFrame extends Frame implements Runnable, WindowListener {
     public void run() {
         for(; !this.done; this.repaint()) {
             try {
-                Thread.sleep(400L);
+//                Thread.sleep(400L);
             } catch (Exception var2) {
                 System.out.println("Error");
             }

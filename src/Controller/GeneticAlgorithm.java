@@ -1,16 +1,10 @@
 package Controller;
 
-import MotionSimulator.Command;
-import MotionSimulator.State;
-import MotionSimulator.TimedCommand;
+import MotionSimulatorPackage.Command;
+import MotionSimulatorPackage.TimedCommand;
 import javafx.util.Pair;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -23,23 +17,23 @@ class GeneticAlgorithm {
     private Random random = new Random();
     private List<Movements> population;
 
-    // Current optimal indivduals
+    // Current optimal individuals
     private Movements lowest = null;
     private Movements currentLowest = null;
 
     // ===== GA parameters ========
 
     // Chromosome length i.e. number of commands
-    private int MIN_LENGTH = 5;
-    private int MAX_LENGTH = 30;
+    private int MIN_LENGTH = 10;
+    private int MAX_LENGTH = 80;
 
     // Selection criteria
     private boolean ELITISM = true;
-    private int TOURNAMENT_SIZE = 20;
+    private int TOURNAMENT_SIZE = 40;
 
     // Mutation
-    private double MUTATION_RATE = 0.5;
-    private double MUTATION_MAGNITUDE = 0.5;
+    private double MUTATION_RATE = 0.2;
+    private double MUTATION_MAGNITUDE = 0.1;
 
     // Crossover
     private double CROSSOVER_RATE = 0.3;
@@ -50,7 +44,9 @@ class GeneticAlgorithm {
 
     // Current state of GA, number of runs
     private int CURRENT_EPOCH = 1;
-    private int MAX_EPOCH = 1000;
+    private int MAX_EPOCH = 50;
+
+    private int pop_size = 500;
 
     // Fitness function
     private PathFunction<Movements> function;
@@ -60,33 +56,48 @@ class GeneticAlgorithm {
         this.function = function;
     }
 
-    GeneticAlgorithm(int maxGen, PathFunction<Movements> function) {
+    GeneticAlgorithm(int pop_size, int maxGen, PathFunction<Movements> function) {
         population = new ArrayList<>();
         this.function = function;
-        this.MAX_EPOCH = maxGen;
+//        this.MAX_EPOCH = maxGen;
+//        this.pop_size = pop_size;
     }
 
     void run() {
-        System.out.println("Training GA:");
-        System.out.println("EPOCH: ");
+        System.out.println("Generating Population");
         generatePopulation();
+        System.out.println("Done!");
+        System.out.println("Training GA:");
+        System.out.printf("[%d] ", CURRENT_EPOCH);
         fitness();
-        System.out.printf("%d, ", CURRENT_EPOCH);
         while (!terminate()) {
+            CURRENT_EPOCH++;
+            System.out.printf("[%d] ", CURRENT_EPOCH);
             evolve();
             fitness();
-            CURRENT_EPOCH++;
-            System.out.printf("%d, ", CURRENT_EPOCH);
         }
     }
 
     private void fitness() {
-        population.stream().parallel().forEach(m -> m.setFitness(function.evaluate(m)));
+        System.out.print("evaluating, ");
+        for (Movements m : population) {
+            m.setFitness(function.evaluate(m));
+        }
 
+        System.out.print("sorting, ");
         List<Movements> sorted = population.stream().parallel().sorted(Movements::compare).collect(Collectors.toList());
         population.clear();
         population.addAll(sorted);
 
+        if (lowest == null)
+            lowest = population.get(0).copy();
+
+        // Determine global optimal
+        if (lowest.getFitness() > population.get(0).getFitness()) {
+            lowest = population.get(0).copy();
+        }
+
+        // Add global optimal to the list
         bestResults.add(lowest);
     }
 
@@ -101,15 +112,12 @@ class GeneticAlgorithm {
 
             // mutate
             for (TimedCommand command : commands) {
-                if (random.nextGaussian() <= MUTATION_RATE) {
 
-                    // Mutating commands
-                    Command c = command.getC();
+                // Mutating commands
+                Command c = command.getC();
 
-                    //ISSUE multiplication instead of addition
-                    c.setLeft((int) Math.round(c.getLeft() * mutationValue));
-                    c.setRight((int) Math.round(c.getRight() * mutationValue));
-                }
+                c.setLeft((int) Math.round(c.getLeft() + mutationValue));
+                c.setRight((int) Math.round(c.getRight() + mutationValue));
             }
         }
 
@@ -122,9 +130,9 @@ class GeneticAlgorithm {
      *
      * @param parent  first parent
      * @param parent2 second parent
-     * @return pair of crossover children
+     * @return crossed child
      */
-    private Pair<Movements, Movements> crossover(Movements parent, Movements parent2) {
+    private Movements crossover(Movements parent, Movements parent2) {
         if (random.nextGaussian() > CROSSOVER_RATE) {
             List<TimedCommand> genes = parent.getPopulation();
             List<TimedCommand> genes2 = parent2.getPopulation();
@@ -136,53 +144,33 @@ class GeneticAlgorithm {
             int xover2 = (shortest != -1) ? random.nextInt(genes2.size()) : random.nextInt(genes.size());
 
             // Create genes array with original gene data cut at the specified crossover index
-            List<TimedCommand> child1Genes = new ArrayList<>(genes.subList(0, xover1 - 1));
-            List<TimedCommand> child2Genes = new ArrayList<>(genes2.subList(0, xover2 - 1));
+            List<TimedCommand> child1Genes = new ArrayList<>(genes.subList(0, (xover1 == 0) ? 0 : xover1 - 1));
 
             // Add additional genes from secondary parent
             child1Genes.addAll(genes2.subList(xover2, genes2.size()));
-            child2Genes.addAll(genes.subList(xover1, genes.size()));
 
             // Iterate over children correcting time position
-            IntStream.range(0, child1Genes.size()).forEach(value -> child1Genes.get(value).setTime(value + 1));
-            IntStream.range(0, child2Genes.size()).forEach(value -> child2Genes.get(value).setTime(value + 1));
+            IntStream.range(0, child1Genes.size()).forEach(value -> child1Genes.get(value).setTime(1));
 
             // Create new children
             Movements child1 = new Movements(child1Genes);
-            Movements child2 = new Movements(child2Genes);
 
-            return new Pair<>(child1, child2);
-        }
-
-        // Return original parents as no crossover occured
-        return new Pair<>(parent, parent2);
+            return child1;
+        } else return (random.nextGaussian() > 0.5) ? parent : parent2;
     }
 
     private void evolve() {
-        List<Movements> selectedList = new CopyOnWriteArrayList<>();
+        List<Movements> selectedList = new ArrayList<>();
 
-        int startIndex = 0;
         if (ELITISM) {
-            startIndex++;
-
             selectedList.add(population.get(0));
         }
 
-        IntStream.range(startIndex, population.size()).parallel().forEach(value -> {
-
-            // Select parent to mutate
-            Movements firstParent = tournamentSelect();
-            Movements secondParent = tournamentSelect();
-
-            // Crossover
-            Pair<Movements, Movements> crossedChildren = crossover(firstParent, secondParent);
-
-            // Mutate children
-            Movements child1 = mutate(crossedChildren.getKey());
-            Movements child2 = mutate(crossedChildren.getValue());
-
-            selectedList.add(child1);
-            selectedList.add(child2);
+        IntStream.range((ELITISM) ? 1 : 0, pop_size).forEach(value -> {
+            // Select parent to mutate & Crossover
+            Movements crossedChild = crossover(tournamentSelect(), tournamentSelect());
+            // Mutate children & add
+            selectedList.add(mutate(crossedChild));
         });
 
         population.clear();
@@ -190,28 +178,52 @@ class GeneticAlgorithm {
     }
 
     private boolean terminate() {
-        if (lowest == null) {
-            lowest = population.get(0).copy();
-        } else {
-            if (lowest.getFitness() > population.get(0).getFitness())
-                lowest = population.get(0).copy();
-            currentLowest = population.get(0).copy();
-        }
-
+        System.out.print("end? ");
         boolean epoch_stop = (CURRENT_EPOCH >= MAX_EPOCH);
         boolean delta_stop = false;
 //        boolean accuracy_stop = (lowest.getFitness() <= ACCURACY_THRESHOLD);
 
-        if (CURRENT_EPOCH > 1) {
-            if ((currentLowest.getFitness() - lowest.getFitness()) / lowest.getFitness() <= FITNESS_DELTA_THRESHOLD)
-                delta_stop = true;
+//        if (currentLowest != null) {
+//            if (lowest != null) {
+
+//                // Determine stopping condition
+//                if (CURRENT_EPOCH > 1) {
+//                    // Current lowest is in this case the previous iteration lowest. i.e. current - previous / current
+//                    if ((currentLowest.getFitness() - population.get(0).getFitness()) / currentLowest.getFitness() <= FITNESS_DELTA_THRESHOLD)
+//                        delta_stop = true;
+//                }
+
+//                lowest = population.get(0).copy();
+//
+//                // Determine global optimal
+//                if (lowest.getFitness() > population.get(0).getFitness()) {
+//                    lowest = population.get(0).copy();
+//                }
+//
+//                // Add global optimal to the list
+//                bestResults.add(lowest);
+//
+//            } else {
+//                lowest = currentLowest;
+//            }
+//        }
+//        currentLowest = population.get(0).copy();
+
+        if (delta_stop) {
+            System.out.printf("\nFitness Threshold reached with value: %f\n", (currentLowest.getFitness() - lowest.getFitness()) / lowest.getFitness());
         }
+        if (epoch_stop) {
+            System.out.printf("\nMax epoch reached: %d / %d\n", CURRENT_EPOCH, MAX_EPOCH);
+        }
+
+        if (!(epoch_stop || delta_stop))
+            System.out.printf(" - %f\n", (lowest == null) ? Double.MIN_VALUE : lowest.getFitness());
 
         return epoch_stop || delta_stop;
     }
 
     private void generatePopulation() {
-        for (int i = 0; i < population.size(); i++) {
+        for (int i = 0; i < pop_size; i++) {
             Movements movement = new Movements();
             // generate each command with left/right values and add to movement.
 
@@ -221,11 +233,17 @@ class GeneticAlgorithm {
                 Command c = new Command(randomBoundedInt(-701, 701), randomBoundedInt(-701, 701));
 
                 // Create timed commanda nd add to movement
-                movement.addCommand(new TimedCommand(c, index));
+                movement.addCommand(new TimedCommand(c, 1));
             });
+            population.add(movement);
         }
     }
 
+    /**
+     * Using a maximum size of <code>TOURNAMENT_SIZE</code>, select random individuals from the population. From these, select the fittest individual.
+     *
+     * @return
+     */
     private Movements tournamentSelect() {
         Movements bestPath = population.get(random.nextInt(population.size()));
         for (int i = 1; i < TOURNAMENT_SIZE; i++) {

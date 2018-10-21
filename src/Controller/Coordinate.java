@@ -41,4 +41,12 @@ public class Coordinate {
     private static Coordinate difference(Coordinate current, Coordinate other){
         return new Coordinate(current.x - other.x, current.y - other.y);
     }
+
+    @Override
+    public String toString() {
+        return "Coordinate{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

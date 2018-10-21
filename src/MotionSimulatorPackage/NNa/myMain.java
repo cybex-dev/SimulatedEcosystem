@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package MotionSimulator.NNa;
+package MotionSimulatorPackage.NNa;
 
 import java.util.Vector;
 

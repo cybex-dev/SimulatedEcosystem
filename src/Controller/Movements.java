@@ -1,6 +1,6 @@
 package Controller;
 
-import MotionSimulator.TimedCommand;
+import MotionSimulatorPackage.TimedCommand;
 
 import java.util.ArrayList;
 import java.util.List;

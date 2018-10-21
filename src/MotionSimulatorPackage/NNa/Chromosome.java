@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package MotionSimulator.NNy;
+package MotionSimulatorPackage.NNa;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -95,7 +95,7 @@ public class Chromosome implements Serializable {
             }
 
             sum += -1.0D * this.weights1[this.numinput][i];
-            return i == 0 ? this.activationFunc1Trig(sum) : this.activationFunc1(sum);
+            return this.activationFunc1(sum);
         } else if (i >= this.numhidden) {
             return -1.0D;
         } else {
@@ -106,7 +106,7 @@ public class Chromosome implements Serializable {
             }
 
             sum += -1.0D * this.weights1[this.numinput][i];
-            return i == this.numprod ? this.activationFunc2Trig(sum) : this.activationFunc2(sum);
+            return this.activationFunc2(sum);
         }
     }
 

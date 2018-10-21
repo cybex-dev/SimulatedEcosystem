@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package MotionSimulator.NNy;
+package MotionSimulatorPackage.NNa;
 
 import java.io.Serializable;
 

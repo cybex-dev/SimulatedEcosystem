@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package MotionSimulator.NNx;
+package MotionSimulatorPackage.NNy;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -91,7 +91,6 @@ public class Chromosome implements Serializable {
             sum = 1.0D;
 
             for(j = 0; j < this.numinput; ++j) {
-                new Double(Math.pow(input[j], this.weights1[j][i]));
                 sum *= Math.pow(input[j], this.weights1[j][i]);
             }
 

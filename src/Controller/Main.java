@@ -1,6 +1,9 @@
 package Controller;
 
-import MotionSimulator.VisualFrame;
+import MotionSimulatorPackage.State;
+import MotionSimulatorPackage.VisualFrame;
+
+import java.util.ArrayList;
 
 public class Main {
 
@@ -14,11 +17,10 @@ public class Main {
         System.out.println("Generating controller");
         robotController.train();
         System.out.println("Done!");
-        VisualFrame frame = new VisualFrame(robotController.getBestSolutionStates());
+        ArrayList<State> bestSolutionStates = robotController.getBestSolutionStates();
+        VisualFrame frame = new VisualFrame(bestSolutionStates);
         System.out.println("Displaying results");
         frame.run();
         System.out.println("Done!");
     }
-
-
 }

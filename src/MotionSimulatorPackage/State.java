@@ -1,4 +1,4 @@
-package MotionSimulator;//
+package MotionSimulatorPackage;//
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by Fernflower decompiler)
 //
@@ -36,5 +36,14 @@ public class State {
 
     public void setA(double a) {
         this.a = a;
+    }
+
+    @Override
+    public String toString() {
+        return "[" +
+                x + "," +
+                y +
+                "]" +
+                " (" + a + ")";
     }
 }

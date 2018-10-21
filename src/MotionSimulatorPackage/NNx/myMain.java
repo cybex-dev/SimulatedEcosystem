@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package MotionSimulator.NNx;
+package MotionSimulatorPackage.NNx;
 
 import java.util.Vector;
 
