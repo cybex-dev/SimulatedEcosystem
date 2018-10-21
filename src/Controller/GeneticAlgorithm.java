@@ -1,7 +1,6 @@
 package Controller;
 
-import MotionSimulatorPackage.Command;
-import MotionSimulatorPackage.TimedCommand;
+import MotionSimulatorPackage.*;
 import javafx.util.Pair;
 
 import java.util.*;
@@ -14,29 +13,28 @@ class GeneticAlgorithm {
     private List<Movements> bestResults = new ArrayList<>();
 
     // Generic Objects
-    private Random random = new Random();
     private List<Movements> population;
 
     // Current optimal individuals
-    private Movements lowest = null;
+    private Movements optimalSolution = null;
     private Movements currentLowest = null;
 
     // ===== GA parameters ========
 
     // Chromosome length i.e. number of commands
-    private int MIN_LENGTH = 10;
-    private int MAX_LENGTH = 80;
+    private int MIN_LENGTH = 1;
+    private int MAX_LENGTH = 100;
 
     // Selection criteria
-    private boolean ELITISM = true;
-    private int TOURNAMENT_SIZE = 40;
+    private boolean ELITISM = false;
+    private int TOURNAMENT_SIZE = 10;
 
     // Mutation
-    private double MUTATION_RATE = 0.2;
-    private double MUTATION_MAGNITUDE = 0.1;
+    private double MUTATION_RATE = 0.1;
+    private double MUTATION_MAGNITUDE = 0.2;
 
     // Crossover
-    private double CROSSOVER_RATE = 0.3;
+    private double CROSSOVER_RATE = 0.6;
 
     // Terminating Conditions
     private double ACCURACY_THRESHOLD = 0.05;
@@ -44,21 +42,86 @@ class GeneticAlgorithm {
 
     // Current state of GA, number of runs
     private int CURRENT_EPOCH = 1;
-    private int MAX_EPOCH = 50;
+    private int MAX_EPOCH = 100;
 
-    private int pop_size = 500;
+    private int pop_size = 200;
 
     // Fitness function
-    private PathFunction<Movements> function;
+    private PathFunction<Movements> function = new PathFunction<Movements>() {
 
-    GeneticAlgorithm(PathFunction<Movements> function) {
-        population = new ArrayList<>();
-        this.function = function;
-    }
+        private MotionSimulator simulator = new MotionSimulator();
+        private final State STATE_INITIAL = new State(0, 0, 0);
 
-    GeneticAlgorithm(int pop_size, int maxGen, PathFunction<Movements> function) {
+        @Override
+        public Coordinate function(double x) {
+            // This gets the X value into a degree form usable by the sin function.
+
+            // This scaling to degrees is done since the original X calculation was done in terms of a 700x700 grid.
+            double degX = (x * 360.0) / 700.0;
+            double y = Math.sin(Math.toRadians(degX));
+            // Scale y to 700 to conform to the original X value
+            double scaledY = y * 700.0;
+            return new Coordinate(x, scaledY);
+        }
+
+        @Override
+        public double evaluate(Movements movements) {
+            // The inverse of the error
+            final ArrayList<Double> fitnessList = new ArrayList<>();
+            List<TimedCommand> population = movements.getPopulation();
+
+            final State[] prevState = {STATE_INITIAL};
+            ArrayList<State> pathStates = new ArrayList<>();
+            IntStream.range(0, population.size()).forEach(value -> {
+                TimedCommand timedCommand = population.get(value);
+                ArrayList<State> path = simulator.getPath(prevState[0], new ArrayList<>(Collections.singletonList(timedCommand)));
+                path.remove(0);
+                prevState[0] = path.get(0);
+                pathStates.add(path.get(0));
+            });
+
+            movements.setLastState(pathStates);
+
+            Map<TimedCommand, State> commandStateMap = new HashMap<>();
+            for (int i = 0; i < pathStates.size(); i++) {
+                commandStateMap.put(population.get(i), pathStates.get(i));
+            }
+
+            commandStateMap.forEach((timedCommand, value) -> fitnessList.add(determineFitness(value)));
+
+            // Add distance from last point to end of function. Can be both sided offset
+            State state = pathStates.get(pathStates.size() - 1);
+            double offSet = 360 - state.getX();
+            Double dy = fitnessList.stream().reduce((d1, d2) -> d1 + d2).orElse(Double.MAX_VALUE);
+
+            double ln_dy = Math.log(dy);
+            double dx = Math.abs(offSet) * Math.E;
+            double v = ln_dy / dx;
+
+            movements.setyOffset(dy);
+            movements.setxOffset(offSet);
+            movements.setFitness(dx);
+
+//            double v = offSet * Math.E/ ln_dy;
+
+            return dx;
+        }
+
+        private double determineFitness(State state) {
+            Coordinate idealLocation = function(Math.round(state.getX()));
+            Coordinate currentLocation = new Coordinate(Math.round(state.getX()), state.getY());
+            Coordinate difference = idealLocation.difference(currentLocation);
+
+            // Get Y difference as the X component will be the same for current and ideal location when correlating the current position to the function
+            double abs = Math.abs(difference.getY());
+            return abs;
+        }
+    };
+
+
+    GeneticAlgorithm(int pop_size, int maxGen/*, PathFunction<Movements> function*/) {
         population = new ArrayList<>();
-        this.function = function;
+//        this.function = function;
 //        this.MAX_EPOCH = maxGen;
 //        this.pop_size = pop_size;
     }
@@ -80,8 +143,9 @@ class GeneticAlgorithm {
 
     private void fitness() {
         System.out.print("evaluating, ");
-        for (Movements m : population) {
-            m.setFitness(function.evaluate(m));
+        for (int i = 0; i < population.size(); i++) {
+            System.out.printf("%d, ", i);
+            function.evaluate(population.get(i));
         }
 
         System.out.print("sorting, ");
@@ -89,26 +153,28 @@ class GeneticAlgorithm {
         population.clear();
         population.addAll(sorted);
 
-        if (lowest == null)
-            lowest = population.get(0).copy();
+        if (optimalSolution == null)
+            optimalSolution = population.get(0).copy();
 
         // Determine global optimal
-        if (lowest.getFitness() > population.get(0).getFitness()) {
-            lowest = population.get(0).copy();
-        }
+        if (optimalSolution.getFitness() < population.get(0).getFitness())
+            optimalSolution = population.get(0).copy();
+
 
         // Add global optimal to the list
-        bestResults.add(lowest);
+        bestResults.add(optimalSolution.copy());
+
+//        new VisualFrame(lowest.getLastState()).run();
     }
 
     private Movements mutate(Movements movements) {
         List<TimedCommand> commands = movements.getPopulation();
 
         // Check if should mutate
-        if (random.nextGaussian() <= MUTATION_RATE) {
+        if (new Random(new Random().nextLong()).nextGaussian() <= MUTATION_RATE) {
 
             // Mutate child with new random values
-            double mutationValue = random.nextGaussian() * MUTATION_MAGNITUDE;
+            double mutationValue = new Random(new Random().nextLong()).nextGaussian() * MUTATION_MAGNITUDE;
 
             // mutate
             for (TimedCommand command : commands) {
@@ -120,6 +186,8 @@ class GeneticAlgorithm {
                 c.setRight((int) Math.round(c.getRight() + mutationValue));
             }
         }
+
+        movements.setPopulation(commands);
 
         // Movement with mutation
         return movements;
@@ -133,48 +201,66 @@ class GeneticAlgorithm {
      * @return crossed child
      */
     private Movements crossover(Movements parent, Movements parent2) {
-        if (random.nextGaussian() > CROSSOVER_RATE) {
-            List<TimedCommand> genes = parent.getPopulation();
-            List<TimedCommand> genes2 = parent2.getPopulation();
+        List<TimedCommand> genes = parent.getPopulation();
+        List<TimedCommand> genes2 = parent2.getPopulation();
 
-            int shortest = Integer.compare(genes.size(), genes2.size());
+        int shortest = Integer.compare(genes.size(), genes2.size());
 
-            // Find a random crossover point respecting the shortest gene size
-            int xover1 = (shortest != 1) ? random.nextInt(genes.size()) : random.nextInt(genes2.size());
-            int xover2 = (shortest != -1) ? random.nextInt(genes2.size()) : random.nextInt(genes.size());
+        // Find a random crossover point respecting the shortest gene size
+        int xover1 = (shortest != 1) ? new Random(new Random().nextLong()).nextInt(genes.size()) : new Random(new Random().nextLong()).nextInt(genes2.size());
+        int xover2 = (shortest != -1) ? new Random(new Random().nextLong()).nextInt(genes2.size()) : new Random(new Random().nextLong()).nextInt(genes.size());
 
-            // Create genes array with original gene data cut at the specified crossover index
-            List<TimedCommand> child1Genes = new ArrayList<>(genes.subList(0, (xover1 == 0) ? 0 : xover1 - 1));
+        // Create genes array with original gene data cut at the specified crossover index
+        List<TimedCommand> child1Genes = new ArrayList<>(genes.subList(0, (xover1 == 0) ? 0 : xover1 - 1));
 
-            // Add additional genes from secondary parent
-            child1Genes.addAll(genes2.subList(xover2, genes2.size()));
+        // Add additional genes from secondary parent
+        child1Genes.addAll(genes2.subList(xover2, genes2.size()));
 
-            // Iterate over children correcting time position
-            IntStream.range(0, child1Genes.size()).forEach(value -> child1Genes.get(value).setTime(1));
+        // Iterate over children correcting time position
+        IntStream.range(0, child1Genes.size()).forEach(value -> child1Genes.get(value).setTime(1));
 
-            // Create new children
-            Movements child1 = new Movements(child1Genes);
+        // Create new children
+        Movements child1 = new Movements(child1Genes);
 
-            return child1;
-        } else return (random.nextGaussian() > 0.5) ? parent : parent2;
+        return child1;
     }
 
     private void evolve() {
         List<Movements> selectedList = new ArrayList<>();
 
-        if (ELITISM) {
-            selectedList.add(population.get(0));
+        int sameCount = 0;
+
+        while (selectedList.size() < population.size()) {
+            // Select parent to mutate & Crossover
+            Movements parent1 = tournamentSelect();
+            Movements parent2 = tournamentSelect();
+
+            if (parent1.hashCode() == parent2.hashCode())
+                sameCount++;
+
+            if (new Random(new Random().nextLong()).nextGaussian() < CROSSOVER_RATE) {
+                Movements crossedChild = crossover(parent1, parent2);
+                // Mutate child & add
+                selectedList.add(mutate(crossedChild));
+            } else {
+
+                // Mutate parents & add
+                Movements mutatedP1 = mutate(parent1);
+                selectedList.add(mutatedP1);
+                if (selectedList.size() != population.size()) {
+                    Movements mutatedP2 = mutate(parent2);
+                    selectedList.add(mutatedP2);
+                }
+            }
         }
 
-        IntStream.range((ELITISM) ? 1 : 0, pop_size).forEach(value -> {
-            // Select parent to mutate & Crossover
-            Movements crossedChild = crossover(tournamentSelect(), tournamentSelect());
-            // Mutate children & add
-            selectedList.add(mutate(crossedChild));
-        });
+        if (ELITISM) {
+            selectedList.remove(0);
+            selectedList.add(0, population.get(0));
+        }
 
         population.clear();
-        population.addAll(selectedList);
+        population = selectedList;
     }
 
     private boolean terminate() {
@@ -210,14 +296,14 @@ class GeneticAlgorithm {
 //        currentLowest = population.get(0).copy();
 
         if (delta_stop) {
-            System.out.printf("\nFitness Threshold reached with value: %f\n", (currentLowest.getFitness() - lowest.getFitness()) / lowest.getFitness());
+            System.out.printf("\nFitness Threshold reached with value: %f\n", (currentLowest.getFitness() - optimalSolution.getFitness()) / optimalSolution.getFitness());
         }
         if (epoch_stop) {
             System.out.printf("\nMax epoch reached: %d / %d\n", CURRENT_EPOCH, MAX_EPOCH);
         }
 
         if (!(epoch_stop || delta_stop))
-            System.out.printf(" - %f\n", (lowest == null) ? Double.MIN_VALUE : lowest.getFitness());
+            System.out.printf(" - %f %s\n", (optimalSolution == null) ? Double.MIN_VALUE : optimalSolution.getFitness(), optimalSolution.getLastXY());
 
         return epoch_stop || delta_stop;
     }
@@ -245,12 +331,18 @@ class GeneticAlgorithm {
      * @return
      */
     private Movements tournamentSelect() {
-        Movements bestPath = population.get(random.nextInt(population.size()));
+        System.out.println("T Selection");
+        Movements bestPath = population.get(new Random(new Random().nextLong()).nextInt(population.size()));
         for (int i = 1; i < TOURNAMENT_SIZE; i++) {
-            Movements randomMovementPath = population.get(random.nextInt(population.size()));
-            if (randomMovementPath.getFitness() < bestPath.getFitness())
+            int i1 = new Random(new Random().nextLong()).nextInt(population.size());
+            System.out.printf("%d, ", i1);
+            Movements randomMovementPath = population.get(i1);
+            if (randomMovementPath.getFitness() < bestPath.getFitness()) {
                 bestPath = randomMovementPath;
+                System.out.print("*");
+            }
         }
+        System.out.println("\nSelected = " + bestPath.getLastXY());
         return bestPath;
     }
 
@@ -262,15 +354,15 @@ class GeneticAlgorithm {
      * @return bounded integer
      */
     private int randomBoundedInt(int lower, int upper) {
-        int r = random.nextInt(upper);
+        int r = new Random(new Random().nextLong()).nextInt(upper);
         while (r < lower) {
-            r = random.nextInt(upper);
+            r = new Random(new Random().nextLong()).nextInt(upper);
         }
         return r;
     }
 
     Movements getLowest() {
-        return lowest;
+        return optimalSolution;
     }
 
     List<Movements> getBestResults() {

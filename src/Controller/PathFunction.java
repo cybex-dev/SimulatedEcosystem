@@ -11,7 +11,7 @@ public interface PathFunction<T> {
      * @param x x value in [x,y]
      * @return coordinate containing position as [x,y]
      */
-    Coordinate function(int x);
+    Coordinate function(double x);
 
     /**
      * Evaluates a set of movements

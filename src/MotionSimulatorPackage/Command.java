@@ -27,4 +27,12 @@ public class Command {
     public void setRight(int right) {
         this.right = right;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                left +
+                ", " + right +
+                '}';
+    }
 }

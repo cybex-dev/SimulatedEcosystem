@@ -1,7 +1,7 @@
 package Controller;
 
 public class Coordinate {
-    private int x, y;
+    private double x, y;
 
     Coordinate(int x, int y) {
         this.x = x;
@@ -9,23 +9,23 @@ public class Coordinate {
     }
 
     Coordinate(double x, double y) {
-        this.x = (int) Math.round(x);
-        this.y = (int) Math.round(y);
+        this.x = x;
+        this.y = y;
     }
 
-    int getX() {
+    double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    int getY() {
+    double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
