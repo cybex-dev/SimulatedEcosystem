@@ -18,5 +18,5 @@ public interface PathFunction<T> {
      * @param t movements list
      * @return fitness value
      */
-    double evaluate(T t);
+    void evaluate(T t);
 }

@@ -3,6 +3,10 @@ package MotionSimulatorPackage;//
 // (powered by Fernflower decompiler)
 //
 
+import Controller.Coordinate;
+
+import java.util.Objects;
+
 public class State {
     double x;
     double y;
@@ -45,5 +49,20 @@ public class State {
                 y +
                 "]" +
                 " (" + a + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof State)) return false;
+        State state = (State) o;
+        return Double.compare(state.x, x) == 0 &&
+                Double.compare(state.y, y) == 0 &&
+                Double.compare(state.a, a) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, a);
     }
 }

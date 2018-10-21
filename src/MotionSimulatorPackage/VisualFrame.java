@@ -31,19 +31,10 @@ public class VisualFrame extends Frame implements Runnable, WindowListener {
     }
 
     public void run() {
-        for(; !this.done; this.repaint()) {
-            try {
-//                Thread.sleep(400L);
-            } catch (Exception var2) {
-                System.out.println("Error");
-            }
-
-            if (this.pointer < this.path.size()) {
-                ++this.pointer;
-                this.setTitle(this.pointer + "");
-            }
-        }
-
+        this.repaint();
+//        image = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
+//        Graphics2D graphics = image.createGraphics();
+//        update(graphics);
     }
 
     public void paint(Graphics g) {
@@ -130,5 +121,10 @@ public class VisualFrame extends Frame implements Runnable, WindowListener {
     }
 
     public void windowOpened(WindowEvent e) {
+
     }
+//
+//    public BufferedImage getImage() {
+//        return image;
+//    }
 }

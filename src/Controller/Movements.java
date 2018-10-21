@@ -6,6 +6,7 @@ import MotionSimulatorPackage.TimedCommand;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Movements implements Chromosome<TimedCommand> {
     private ArrayList<TimedCommand> commands = new ArrayList<>();
@@ -154,5 +155,26 @@ public class Movements implements Chromosome<TimedCommand> {
      */
     public double distanceTo0FromYOffset() {
         return Math.abs(yOffset) - 0.0;
+    }
+
+    public static Movements comparatorWorst(Movements movements, Movements movements1) {
+        return compare(movements, movements1) > -1 ? movements : movements1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movements)) return false;
+        Movements movements = (Movements) o;
+        return Double.compare(movements.yOffset, yOffset) == 0 &&
+                Double.compare(movements.xOffset, xOffset) == 0 &&
+                Objects.deepEquals(commands, movements.commands) &&
+                Objects.equals(fitness, movements.fitness) &&
+                Objects.deepEquals(lastState, movements.lastState);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(commands, fitness, lastState, yOffset, xOffset);
     }
 }
