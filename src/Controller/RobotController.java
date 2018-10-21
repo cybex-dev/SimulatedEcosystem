@@ -56,6 +56,7 @@ class RobotController {
     }
 
     void train()  {
+        geneticAlgorithm.setID(ID);
         geneticAlgorithm.run();
 
         initLogger();

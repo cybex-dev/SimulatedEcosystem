@@ -113,6 +113,7 @@ class GeneticAlgorithm {
             return euclideanDistance(new Coordinate(dx, dy));
         }
     };
+    private String ID;
 
 
     GeneticAlgorithm(int max_gen, int pop_size, int tSize, double xOver, double mMag, double mRate) {
@@ -126,18 +127,18 @@ class GeneticAlgorithm {
     }
 
     void run() {
-//        System.out.println("Generating Population");
+        System.out.println("Generating Population");
         generatePopulation();
 //        System.out.println("Done!");
-//        System.out.println("Training GA:");
-//        System.out.printf("[%d] ", CURRENT_EPOCH);
+        System.out.println("Training GA:");
+//        System.out.printfreached("[%d] ", CURRENT_EPOCH);
         fitness();
 //        System.out.printf("run:135 [ %f ]\n", optimalSolution.getFitness());
         while (!terminate()) {
 //            System.out.printf("run:137 [ %f ]\n", optimalSolution.getFitness());
             CURRENT_EPOCH++;
 //            System.out.printf("run:139 [ %f ]\n", optimalSolution.getFitness());
-//            System.out.printf("[%d] ", CURRENT_EPOCH);
+//            System.out.printf("%s: [%d]\n", this.ID ,CURRENT_EPOCH);
 //            System.out.printf("run:141 [ %f ]\n", optimalSolution.getFitness());
             evolve();
 //            System.out.printf("run:143 [ %f ]\n", optimalSolution.getFitness());
@@ -329,12 +330,12 @@ class GeneticAlgorithm {
 //        }
 //        currentLowest = population.get(0).copy();
 
-        if (delta_stop) {
-            System.out.printf("\nFitness Threshold reached with value: %f\n", (currentLowest.getFitness() - optimalSolution.getFitness()) / optimalSolution.getFitness());
-        }
-        if (epoch_stop) {
-            System.out.printf("\nMax epoch reached: %d / %d\n", CURRENT_EPOCH, MAX_EPOCH);
-        }
+//        if (delta_stop) {
+//            System.out.printf("\nFitness Threshold reached with value: %f\n", (currentLowest.getFitness() - optimalSolution.getFitness()) / optimalSolution.getFitness());
+//        }
+//        if (epoch_stop) {
+//            System.out.printf("\nMax epoch reached: %d / %d\n", CURRENT_EPOCH, MAX_EPOCH);
+//        }
 
 //        if (!(epoch_stop || delta_stop))
 //            System.out.printf(" - %f %s\n", (optimalSolution == null) ? Double.MIN_VALUE : optimalSolution.getFitness(), optimalSolution.getLastXY());
@@ -421,5 +422,9 @@ class GeneticAlgorithm {
 
     public int getPop_size() {
         return pop_size;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }
