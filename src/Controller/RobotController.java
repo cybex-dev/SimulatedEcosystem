@@ -44,7 +44,7 @@ class RobotController {
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void initLogger() {
         try {
-            File logger = new File("results//controller_" + ID + ".csv");
+            File logger = new File("results\\controller_" + ID + ".csv");
             if (logger.exists())
                 logger.delete();
             logger.createNewFile();
