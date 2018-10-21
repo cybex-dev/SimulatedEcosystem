@@ -91,20 +91,20 @@ class GeneticAlgorithm {
 
             // Add distance from last point to end of function. Can be both sided offset
             State state = pathStates.get(pathStates.size() - 1);
-            double offSet = 360 - state.getX();
+            double xOffSet = 360 - state.getX();
             Double dy = fitnessList.stream().reduce((d1, d2) -> d1 + d2).orElse(Double.MAX_VALUE);
 
             double ln_dy = Math.log(dy);
-            double dx = Math.abs(offSet) * Math.E;
-            double v = ln_dy / dx;
+            double dx = Math.abs(xOffSet) * Math.E;
+            double v = dx / ln_dy;
 
             movements.setyOffset(dy);
-            movements.setxOffset(offSet);
-            movements.setFitness(dx);
+            movements.setxOffset(xOffSet);
+            movements.setFitness(v);
 
 //            double v = offSet * Math.E/ ln_dy;
 
-            return dx;
+            return v;
         }
 
         private double determineFitness(State state) {
@@ -144,7 +144,6 @@ class GeneticAlgorithm {
     private void fitness() {
         System.out.print("evaluating, ");
         for (int i = 0; i < population.size(); i++) {
-            System.out.printf("%d, ", i);
             function.evaluate(population.get(i));
         }
 
@@ -235,8 +234,10 @@ class GeneticAlgorithm {
             Movements parent1 = tournamentSelect();
             Movements parent2 = tournamentSelect();
 
-            if (parent1.hashCode() == parent2.hashCode())
+            while (parent1.hashCode() == parent2.hashCode()) {
                 sameCount++;
+                parent2 = tournamentSelect();
+            }
 
             if (new Random(new Random().nextLong()).nextGaussian() < CROSSOVER_RATE) {
                 Movements crossedChild = crossover(parent1, parent2);
@@ -244,12 +245,17 @@ class GeneticAlgorithm {
                 selectedList.add(mutate(crossedChild));
             } else {
 
+                // check if the selected list already contains the parent
+
                 // Mutate parents & add
                 Movements mutatedP1 = mutate(parent1);
-                selectedList.add(mutatedP1);
+                if (!selectedList.contains(mutatedP1))
+                    selectedList.add(mutatedP1);
                 if (selectedList.size() != population.size()) {
                     Movements mutatedP2 = mutate(parent2);
-                    selectedList.add(mutatedP2);
+
+                    if (!selectedList.contains(mutatedP2))
+                        selectedList.add(mutatedP2);
                 }
             }
         }
@@ -331,18 +337,14 @@ class GeneticAlgorithm {
      * @return
      */
     private Movements tournamentSelect() {
-        System.out.println("T Selection");
         Movements bestPath = population.get(new Random(new Random().nextLong()).nextInt(population.size()));
         for (int i = 1; i < TOURNAMENT_SIZE; i++) {
             int i1 = new Random(new Random().nextLong()).nextInt(population.size());
-            System.out.printf("%d, ", i1);
             Movements randomMovementPath = population.get(i1);
             if (randomMovementPath.getFitness() < bestPath.getFitness()) {
                 bestPath = randomMovementPath;
-                System.out.print("*");
             }
         }
-        System.out.println("\nSelected = " + bestPath.getLastXY());
         return bestPath;
     }
 
