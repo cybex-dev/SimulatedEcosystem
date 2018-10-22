@@ -16,14 +16,13 @@ public class Main {
     }
 
     private Main(){
-        Queue<RunnableThread> list = new PriorityQueue<>();
         System.out.println("Generating controllers");
         final ExecutorService pool = Executors.newFixedThreadPool(MAX_CORES);
 
         int count = 0;
-        for (int epoch: Arrays.asList(100, 200, 400)){
-            for (int popSize: Arrays.asList(50, 100, 200, 400)){
-                for (int tSize: Arrays.asList(5, 10, 20)){
+        for (int epoch: Collections.singletonList(200)){
+            for (int popSize: Arrays.asList(100, 200)){
+                for (int tSize: Collections.singletonList(10)){
                     for (double xOver: Arrays.asList(0.2, 0.3, 0.5, 0.6, 0.8)){
                         for (double mRate: Arrays.asList(0.1, 0.2, 0.4)){
                             for (double mMag: Arrays.asList(0.05, 0.1, 0.2)){
@@ -43,28 +42,5 @@ public class Main {
         }
         System.out.println("All threads created!");
 
-    }
-}
-
-class RunnableThread implements Comparable{
-    private Runnable runnable;
-    private int index;
-
-    public RunnableThread(Runnable runnable, int index) {
-        this.runnable = runnable;
-        this.index = index;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
-    public Runnable getRunnable() {
-        return runnable;
-    }
-
-    public int getIndex() {
-        return index;
     }
 }
