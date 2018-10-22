@@ -2,12 +2,9 @@ package Controller;
 
 import MotionSimulatorPackage.MotionSimulator;
 import MotionSimulatorPackage.State;
-import MotionSimulatorPackage.TimedCommand;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -49,9 +46,7 @@ class RobotController {
             logger.createNewFile();
 
             writer = new PrintWriter(logger);
-
             List<Movements> bestResults = geneticAlgorithm.getBestResults();
-
             File file = new File("results");
             file.mkdirs();
 
@@ -79,54 +74,9 @@ class RobotController {
 
             writer.write(builder.toString());
             writer.close();
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Could not write results");
         }
-
-//        VisualFrame frame = new VisualFrame(getBestSolutionStates());
-//        frame.setTitle(ID);
-//        frame.run();
-//        BufferedImage image = frame.getImage();
-//        frame.hide();
-//        try {
-//            ImageIO.write(image, "png", new File("results//plot" + ID + ".png"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
     }
-
-    /**
-     * Gets the best solution of the algorithm
-     *
-     * @return best movement / /individual
-     */
-    private Movements getBestSolution() {
-        return geneticAlgorithm.getLowest();
-    }
-
-    /**
-     * Returns the corresponding state list of the best solution
-     *
-     * @return best individual states
-     */
-    ArrayList<State> getBestSolutionStates() {
-        Movements bestSolution = getBestSolution();
-        ArrayList<State> lastState = bestSolution.getLastState();
-        List<TimedCommand> population = getBestSolution().getPopulation();
-        ArrayList<State> path = simulator.getPath(STATE_INITIAL, new ArrayList<>(population));
-        return lastState;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-
 }

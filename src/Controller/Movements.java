@@ -2,8 +2,6 @@ package Controller;
 
 import MotionSimulatorPackage.State;
 import MotionSimulatorPackage.TimedCommand;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,11 +10,9 @@ public class Movements implements Chromosome<TimedCommand> {
     private ArrayList<TimedCommand> commands = new ArrayList<>();
     private Double fitness;
     private ArrayList<State> lastState = new ArrayList<>();
-
     private double yOffset, xOffset;
 
-    Movements() {
-    }
+    Movements() {}
 
     private Movements(List<TimedCommand> commands, Double fitness) {
         this.commands = new ArrayList<>(commands);
@@ -25,14 +21,6 @@ public class Movements implements Chromosome<TimedCommand> {
 
     Movements(List<TimedCommand> commands) {
         this.commands = new ArrayList<>(commands);
-    }
-
-    public TimedCommand getCommand(int index) {
-        return commands.get(index);
-    }
-
-    public void setCommand(TimedCommand command, int index) {
-        this.commands.set(index, command);
     }
 
     public double getFitness() {
@@ -90,71 +78,17 @@ public class Movements implements Chromosome<TimedCommand> {
 
     @Override
     public String toString() {
-//        StringBuilder builder = new StringBuilder();
-//        for (int i = 0; i < lastState.size(); i++) {
-//            builder.append(commands.get(i).toString()).append("; ").append(lastState.get(i).toString()).append(";\n");
-//        }
         State firstPos = (lastState.size() == 0) ? new State(0, 0, 0) : lastState.get(0);
         State lastPos = (lastState.size() == 0) ? new State(0, 0, 0) : lastState.get(lastState.size() - 1);
-
-        return
-                "[" +
-                        firstPos.getX() +
-                        ", " + firstPos.getY() +
-                        "] => [" +
-                        lastPos.getX() +
-                        ", " + lastPos.getY() +
-                        "]" +
-                        "{" +
-                        "Fit =" + fitness +
-                        ", HASH = " + this.hashCode() +
-                        '}';
-    }
-
-    public String getLastXY() {
-        State firstPos = (lastState.size() == 0) ? new State(0, 0, 0) : lastState.get(0);
-        State lastPos = (lastState.size() == 0) ? new State(0, 0, 0) : lastState.get(lastState.size() - 1);
-        return "[" +
-                firstPos.getX() +
-                ", " + firstPos.getY() +
-                "] => [" +
-                lastPos.getX() +
-                ", " + lastPos.getY() +
-                "]";
-    }
-
-    public double getyOffset() {
-        return yOffset;
+        return "[" + firstPos.getX() + ", " + firstPos.getY() + "] => [" + lastPos.getX() + ", " + lastPos.getY() + "]" + "{" + "Fit =" + fitness + ", HASH = " + this.hashCode() + '}';
     }
 
     public void setyOffset(double yOffset) {
         this.yOffset = yOffset;
     }
 
-    public double getxOffset() {
-        return xOffset;
-    }
-
     public void setxOffset(double xOffset) {
         this.xOffset = xOffset;
-    }
-
-    /**
-     * Single axis xoffset distance measurement
-     *
-     * @return distance to value
-     */
-    public double distanceTo0FromXOffset() {
-        return Math.abs(xOffset) - 0.0;
-    }
-
-    /**
-     * Single axis yoffset distance measurement
-     *
-     * @return distance to value
-     */
-    public double distanceTo0FromYOffset() {
-        return Math.abs(yOffset) - 0.0;
     }
 
     public static Movements comparatorWorst(Movements movements, Movements movements1) {
