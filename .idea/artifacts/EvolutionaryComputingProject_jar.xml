@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EvolutionaryComputingProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EvolutionaryComputingProject_jar</output-path>
+    <root id="archive" name="EvolutionaryComputingProject.jar">
+      <element id="module-output" name="EvolutionaryComputingProject" />
+    </root>
+  </artifact>
+</component>

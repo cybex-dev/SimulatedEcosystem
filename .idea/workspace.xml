@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="EvolutionaryComputingProject:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1cc0db-6e80-4374-ae8a-19caeb4861e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/EvolutionaryComputingProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EvolutionaryComputingProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="de1cc0db-6e80-4374-ae8a-19caeb4861e3" name="Default Changelist" comment="Working GA&#10;&#10;Use EvolutionaryComputingProject.jar to run the application.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Movements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Movements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RobotController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,25 +34,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="36" />
+          <entry key="java" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="36" />
+          <entry key="JAVA" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
-          <entry key="java" value="950" />
-          <entry key="txt" value="33" />
+          <entry key="java" value="7249" />
+          <entry key="txt" value="77" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="950" />
-          <entry key="PLAIN_TEXT" value="37" />
+          <entry key="JAVA" value="7249" />
+          <entry key="PLAIN_TEXT" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -86,23 +89,55 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-468016899">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.27" value="2" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="csv" value="2" />
+          <entry key="java" value="11403" />
+          <entry key="txt" value="492" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="11403" />
+          <entry key="PLAIN_TEXT" value="494" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="15" />
+          <entry key="csv" value="9" />
+          <entry key="java" value="83" />
+          <entry key="png" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="15" />
+          <entry key="Image" value="6" />
+          <entry key="JAVA" value="83" />
+          <entry key="PLAIN_TEXT" value="9" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Chromosome.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="157" column="61" selection-start-line="157" selection-start-column="61" selection-end-line="157" selection-end-column="61" />
+            <state relative-caret-position="320">
+              <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,29 +145,77 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Movements.java">
+      <file leaf-file-name="RobotController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/RobotController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="42" column="58" selection-start-line="42" selection-start-column="58" selection-end-line="42" selection-end-column="58" />
+            <state relative-caret-position="1138">
+              <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
               <folding>
-                <element signature="e#266#267#0" expanded="true" />
-                <element signature="e#323#324#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#986#987#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#4064#4065#0" expanded="true" />
+                <element signature="e#4115#4116#0" expanded="true" />
+                <element signature="e#4481#4482#0" expanded="true" />
+                <element signature="e#4506#4507#0" expanded="true" />
+                <element signature="e#4542#4543#0" expanded="true" />
+                <element signature="e#4570#4571#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/RobotController.java">
+      <file leaf-file-name="VisualFrame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/VisualFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="90">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#windowClosed#0;class#VisualFrame#0" />
+                <element signature="method#windowDeactivated#0;class#VisualFrame#0" />
+                <element signature="method#windowDeiconified#0;class#VisualFrame#0" />
+                <element signature="method#windowIconified#0;class#VisualFrame#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Chromosome.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/NNx/Chromosome.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1440">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Movements.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Movements.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#988#989#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1634#1635#0" expanded="true" />
+                <element signature="e#1676#1677#0" expanded="true" />
+                <element signature="e#3745#3746#0" expanded="true" />
+                <element signature="e#3783#3784#0" expanded="true" />
+                <element signature="e#5063#5064#0" expanded="true" />
+                <element signature="e#5146#5147#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,20 +225,47 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getX</find>
-      <find>Chroms</find>
-      <find>Chromosome</find>
-      <find>T</find>
+      <find>setLast</find>
+      <find>pop_s</find>
+      <find>2000</find>
+      <find>getLastY</find>
+      <find>dy</find>
+      <find>T Seke</find>
+      <find>evalu</find>
+      <find>selected</find>
+      <find>TOURN</find>
+      <find>&quot;,</find>
+      <find>bestRe</find>
+      <find>new Random(new Random().nextLong())</find>
+      <find>fitness() {</find>
+      <find>opti</find>
+      <find>toString</find>
+      <find>optimal</find>
+      <find>evaluate</find>
+      <find>eucliea</find>
+      <find>mutationValue</find>
+      <find>crossover</find>
+      <find>CROSSOVER</find>
+      <find>dx</find>
+      <find>results\\</find>
+      <find>path</find>
+      <find>stream</find>
+      <find>System.</find>
+      <find>buffer</find>
+      <find>reached</find>
+      <find>fitness()</find>
+      <find>max_100_pop50_tour5_xover0.2_mag0.05_rate0.1</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;Movements&gt;</replace>
+      <replace>random</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -188,14 +298,26 @@
         <option value="$PROJECT_DIR$/src/MotionSimulator.java" />
         <option value="$PROJECT_DIR$/src/VisualFrame.java" />
         <option value="$PROJECT_DIR$/src/MotionSimulator/NNa/Chromosome.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Main.java" />
-        <option value="$PROJECT_DIR$/src/Controller/PathFunction.java" />
         <option value="$PROJECT_DIR$/src/Controller/Gene.java" />
         <option value="$PROJECT_DIR$/src/Controller/Chromosome.java" />
         <option value="$PROJECT_DIR$/src/Controller/Movement.java" />
-        <option value="$PROJECT_DIR$/src/Controller/RobotController.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulator/State.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulator/VisualFrame.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulator/TimedCommand.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulator/Command.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulator/MotionSimulator.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulatorPackage/MotionSimulator.java" />
+        <option value="$PROJECT_DIR$/controller_default.csv" />
+        <option value="$PROJECT_DIR$/src/MotionSimulatorPackage/TimedCommand.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulatorPackage/Command.java" />
+        <option value="$PROJECT_DIR$/src/Controller/PathFunction.java" />
         <option value="$PROJECT_DIR$/src/Controller/Movements.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Coordinate.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulatorPackage/State.java" />
+        <option value="$PROJECT_DIR$/src/MotionSimulatorPackage/VisualFrame.java" />
         <option value="$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/Controller/RobotController.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Main.java" />
       </list>
     </option>
   </component>
@@ -205,11 +327,20 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1432" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="195" />
+    <option name="y" value="27" />
+    <option name="width" value="653" />
+    <option name="height" value="569" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -217,14 +348,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="SimulatedEcosystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="SimulatedEcosystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimulatedEcosystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimulatedEcosystem" type="462c0819:PsiDirectoryNode" />
+              <item name="results" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimulatedEcosystem" type="b2602c69:ProjectViewProjectNode" />
@@ -237,41 +371,38 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SimulatedEcosystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimulatedEcosystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MotionSimulator" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="Visual&#9;FILE&#9;file:///home/cybex/IdeaProjects/EvolutionaryComputingProject/src/MotionSimulatorPackage/VisualFrame.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/WRPV302/Assignment5/s213221861-Jones Dillon Mark/Assignment 5 (3)/Assignment 5/Task03" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/NNy" />
       <recent name="$PROJECT_DIR$/src/NNx" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -286,10 +417,25 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Controller.Main" />
+      <module name="EvolutionaryComputingProject" />
+      <extension name="chronon">
+        <include>
+          <pattern>
+            <option name="PATTERN" value="Controller.**" />
+            <option name="ENABLED" value="true" />
+            <option name="INCLUDE" value="true" />
+          </pattern>
+        </include>
+      </extension>
+    </configuration>
+  </component>
   <component name="SbtLocalSettings">
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$/../RECH-System" value="PREVIEW" />
+        <entry key="$USER_HOME$/RECH-System" value="PREVIEW" />
       </map>
     </option>
   </component>
@@ -310,6 +456,12 @@
       <workItem from="1539769791906" duration="22391000" />
       <workItem from="1539899713132" duration="463000" />
       <workItem from="1539902019959" duration="549000" />
+      <workItem from="1540025057155" duration="18853000" />
+      <workItem from="1540047083925" duration="21208000" />
+      <workItem from="1540091957155" duration="24426000" />
+      <workItem from="1540125263536" duration="28183000" />
+      <workItem from="1540161066604" duration="3341000" />
+      <workItem from="1540169442580" duration="1437000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit with modifications">
       <created>1539899815237</created>
@@ -325,45 +477,90 @@
       <option name="project" value="LOCAL" />
       <updated>1539900230087</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added logger">
+      <created>1540025744895</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1540025744895</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Issue with population being very similar as time progresses i.e. Random() does not get entirely random values resulting in the same indivduals being chosen over and over. &#10;&#10;This causes identical individuals by generation 15, however all code indicates that it should be different">
+      <created>1540112921914</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1540112921957</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed population issue, however optimal value remains the same from start.">
+      <created>1540114641065</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1540114641065</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Working GA&#10;&#10;Use out/artifacts/EvolutionaryComputingProject_jar/EvolutionaryComputingProject.jar to run the application.">
+      <created>1540154022704</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540154022705</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Working GA&#10;&#10;Use EvolutionaryComputingProject.jar to run the application.">
+      <created>1540154068006</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1540154068006</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29956000" />
+    <option name="totallyTimeSpent" value="141034000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1432" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.497921" visible="true" weight="0.37153518" />
-      <window_info id="Structure" order="1" sideWeight="0.502079" side_tool="true" visible="true" weight="0.37153518" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Learn" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32952693" />
       <window_info anchor="bottom" id="SBT Console" order="8" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32952693" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015083" side_tool="true" weight="0.53833604" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.3295626" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32952693" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924585" weight="0.611691" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32952693" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" weight="0.32952693" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4778481" visible="true" weight="0.13326226" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info id="Structure" order="1" sideWeight="0.5221519" side_tool="true" weight="0.46034214" />
+      <window_info anchor="right" id="Ant Build" order="8" side_tool="true" weight="0.24962293" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4984917" visible="true" weight="0.48434237" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32952693" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Learn" order="4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,184 +597,374 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit with modifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit with modifications" />
+    <MESSAGE value="Complete!&#10;&#10;Needed: Bug-test" />
+    <MESSAGE value="Added logger" />
+    <MESSAGE value="Issue with population being very similar as time progresses i.e. Random() does not get entirely random values resulting in the same indivduals being chosen over and over. &#10;&#10;This causes identical individuals by generation 15, however all code indicates that it should be different" />
+    <MESSAGE value="Fixed population issue, however optimal value remains the same from start." />
+    <MESSAGE value="Working GA&#10;&#10;Use out/artifacts/EvolutionaryComputingProject_jar/EvolutionaryComputingProject.jar to run the application." />
+    <MESSAGE value="Working GA&#10;&#10;Use EvolutionaryComputingProject.jar to run the application." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working GA&#10;&#10;Use EvolutionaryComputingProject.jar to run the application." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="36" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MotionSimulatorPackage/MotionSimulator.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controller/RobotController.java</url>
+          <line>84</line>
+          <properties />
+        </line-breakpoint>
+        <breakpoint type="java-wildcard-method">
+          <properties class="java.io.BufferedReader" method="readLine">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="110" />
+        </breakpoint>
+        <line-breakpoint type="java-field">
+          <url>file://$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java</url>
+          <line>19</line>
+          <properties field="optimalSolution" class="Controller.GeneticAlgorithm" />
+          <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint type="java-field">
+          <url>file://$PROJECT_DIR$/src/Controller/Movements.java</url>
+          <line>12</line>
+          <properties field="fitness" class="Controller.Movements" />
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="optimalSolution.getFitness()" language="JAVA" />
+        <watch expression="population.get(0).getFitness()" language="JAVA" />
+        <watch expression="new vVisualFrame(optimalSolution.getLastState()).run()" language="JAVA" />
+        <watch expression="((GeneticAlgorithm)this).population" custom="Controller.GeneticAlgorithm" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>CURRENT_EPOCH == 3</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>selectedList.size() != population.size()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>selectedList.size() == 201</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>pathStates.size() == 0</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>dy == 0.0</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>yOffset == 0.0</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>selectedList.size() != 100</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>path.size == 0 || path == null</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>path.size == 0</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>pathStates.size != ((ArrayList) population).size</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="watch">
+      <expression>
+        <expression-string>new vVisualFrame(optimalSolution.getLastState()).run()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new VisualFrame(optimalSolution.getLastState()).run()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new VisualFrame(sorted.get(1).getLastState()).run()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new VvisualFrame(sorted.get(1).getLastState()).run()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>population.contains(optimalSolution)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new VisualFrame(optimalSolution.lastState).run()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>population.stream().sorted(Movements::compare).collect(Collectors.toList())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>population.stream().sorted(Movements::compare).collect(Collectors.toList()).get(1)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Objects.deepEquals(population.stream().sorted(Movements::compare).collect(Collectors.toList()).get(1).getLastState().toArray(), optimalSolution.getLastState().toArray())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Objects.deepEquals(population.stream().sorted(Movements::compare).collect(Collectors.toList()).get(1).getPopulation().toArray(), optimalSolution.getLastState().toArray())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>population.contains(optimalSolution)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNx/pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNa/pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNy/pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNx/Chromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNa/myMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#4441#0" expanded="true" />
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNx/myMain.java">
+    <entry file="file://$PROJECT_DIR$/controllerdefault.csv" />
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/NNx/myMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/stream/Collectors.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/concurrent/ForkJoinTask.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/HashMap.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/function/BiFunction.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/lang/Float.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/java2d/SunGraphicsEnvironment.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/reflect/NativeConstructorAccessorImpl.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/awt/GraphicsEnvironment.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/awt/Window.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/misc/JarIndex.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/security/AccessController.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/misc/URLClassPath.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/io/BufferedReader.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/java2d/SunGraphics2D.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/io/FileOutputStream.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/concurrent/ConcurrentHashMap.java" />
+    <entry file="file://$PROJECT_DIR$/controller_default.csv" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/Arrays.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/lang/String.java" />
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/TimedCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/List.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/lang/Object.java" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/Objects.java" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/PathFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/NNy/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/AbstractList.java" />
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/NNa/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/NNy/myMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/util/ArrayList.java" />
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
           <folding>
-            <element signature="e#0#4383#0" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNy/myMain.java">
+    <entry file="file://$PROJECT_DIR$/src/Controller/Coordinate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+        <state relative-caret-position="389">
+          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
           <folding>
-            <element signature="e#0#3911#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNy/Chromosome.java">
+    <entry file="file://$PROJECT_DIR$/results/controller_max_5_pop200_tour20_xover0.6_mag0.2_rate0.1.csv" />
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/MotionSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/NNa/Chromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state relative-caret-position="320">
+          <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
           <folding>
-            <element signature="e#0#3741#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/MotionSimulator.java">
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/java2d/pipe/GlyphListLoopPipe.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/jre/lib/rt.jar!/sun/java2d/loops/Blit.class" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/awt/Frame.java" />
+    <entry file="file://$PROJECT_DIR$/results/plotmax_5_pop200_tour20_xover0.6_mag0.2_rate0.1.png" />
+    <entry file="file://$PROJECT_DIR$/results/plotmax_20_pop200_tour20_xover0.6_mag0.2_rate0.1.png" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/awt/Component.java" />
+    <entry file="file://$PROJECT_DIR$/results/controller_max_20_pop200_tour20_xover0.6_mag0.2_rate0.1.csv" />
+    <entry file="jar:///usr/lib/jvm/intellij-jdk/src.zip!/java/awt/image/BufferedImage.java" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/Movements.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Gene.java" />
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/TimedCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionSimulator/VisualFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="810">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
           <folding>
-            <element signature="method#paint#0;class#VisualFrame#0" />
-            <element signature="method#windowActivated#0;class#VisualFrame#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1634#1635#0" expanded="true" />
+            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="e#3745#3746#0" expanded="true" />
+            <element signature="e#3783#3784#0" expanded="true" />
+            <element signature="e#5063#5064#0" expanded="true" />
+            <element signature="e#5146#5147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/NNx/Chromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MotionSimulatorPackage/VisualFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#windowClosed#0;class#VisualFrame#0" />
-            <element signature="method#windowClosing#0;class#VisualFrame#0" />
             <element signature="method#windowDeactivated#0;class#VisualFrame#0" />
             <element signature="method#windowDeiconified#0;class#VisualFrame#0" />
             <element signature="method#windowIconified#0;class#VisualFrame#0" />
-            <element signature="method#windowOpened#0;class#VisualFrame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PathFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Chromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RobotController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Movements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="42" column="58" selection-start-line="42" selection-start-column="58" selection-end-line="42" selection-end-column="58" />
-          <folding>
-            <element signature="e#266#267#0" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#986#987#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/GeneticAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="157" column="61" selection-start-line="157" selection-start-column="61" selection-end-line="157" selection-end-column="61" />
+        <state relative-caret-position="240">
+          <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/RobotController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1138">
+          <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4064#4065#0" expanded="true" />
+            <element signature="e#4115#4116#0" expanded="true" />
+            <element signature="e#4481#4482#0" expanded="true" />
+            <element signature="e#4506#4507#0" expanded="true" />
+            <element signature="e#4542#4543#0" expanded="true" />
+            <element signature="e#4570#4571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -590,10 +977,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>EvolutionaryComputingProject:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
