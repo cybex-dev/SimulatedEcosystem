@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Getting fitness values"
+fitnessList=$(
+	for e in $(ls); do 
+		cat $e | pcregrep -e "^((-)?\d+[.]\d+)[,]((-)?\d+[.]\d+)[,]((-)?\d+[.]\d+)[,]$" | tail -n 1 | cut -d"," -f1; 
+	done)
+echo "Sorting..."
+sort -g <<< $fitnessList

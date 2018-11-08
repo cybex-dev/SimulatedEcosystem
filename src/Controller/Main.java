@@ -1,6 +1,5 @@
 package Controller;
 
-import MotionSimulatorPackage.State;
 import MotionSimulatorPackage.VisualFrame;
 
 import java.util.*;
@@ -11,6 +10,9 @@ public class Main {
 
     int MAX_CORES = 8;
 
+    List<RobotController> robotControllers = new ArrayList<>();
+    List<Runnable> runnables = new ArrayList<>();
+
     public static void main(String[] args) {
         new Main();
     }
@@ -19,7 +21,7 @@ public class Main {
         System.out.println("Generating controllers");
         final ExecutorService pool = Executors.newFixedThreadPool(MAX_CORES);
 
-        int count = 0;
+        int count = -1;
         for (int epoch: Collections.singletonList(200)){
             for (int popSize: Arrays.asList(100, 200)){
                 for (int tSize: Collections.singletonList(10)){
@@ -28,11 +30,15 @@ public class Main {
                             for (double mMag: Arrays.asList(0.05, 0.1, 0.2)){
                                 count++;
                                 int finalCount = count;
-
-                                pool.execute(() -> {
-                                    System.out.println("Starting " + finalCount);
-                                    new RobotController(epoch, popSize, tSize, xOver, mMag, mRate).train();
-                                    System.out.printf("Done: %d\n", finalCount);
+                                RobotController robotController = new RobotController(epoch, popSize, tSize, xOver, mMag, mRate);
+                                robotControllers.add(finalCount, robotController);
+                                runnables.add(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        System.out.println("Starting " + finalCount);
+                                        robotController.train();
+                                        System.out.printf("Done: %d\n", finalCount);
+                                    }
                                 });
                             }
                         }
@@ -40,7 +46,14 @@ public class Main {
                 }
             }
         }
-        System.out.println("All threads created!");
+        RobotController fittestController = robotControllers.stream().reduce(RobotController::compare).orElse(null);
+        if (fittestController == null) {
+            System.out.println("Error in getting fittest controller");
+            return;
+        }
+
+        VisualFrame frame = new VisualFrame(fittestController.getStates());
+        frame.run();
 
     }
 }

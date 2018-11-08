@@ -1,7 +1,6 @@
 package Controller;
 
-import MotionSimulatorPackage.State;
-import MotionSimulatorPackage.TimedCommand;
+import MotionSimulatorPackage.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

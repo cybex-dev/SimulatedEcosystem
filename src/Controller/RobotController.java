@@ -1,10 +1,10 @@
 package Controller;
 
-import MotionSimulatorPackage.MotionSimulator;
-import MotionSimulatorPackage.State;
+import MotionSimulatorPackage.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -78,5 +78,19 @@ class RobotController {
             e.printStackTrace();
             System.out.println("Could not write results");
         }
+    }
+
+    public ArrayList<State> getStates(){
+        List<Movements> bestResults = geneticAlgorithm.getBestResults();
+        return bestResults.get(bestResults.size() - 1).getLastState();
+    }
+
+    public double getFittest(){
+        List<Movements> bestResults = geneticAlgorithm.getBestResults();
+        return bestResults.get(bestResults.size() - 1).getFitness();
+    }
+
+    public static RobotController compare(RobotController robotController, RobotController robotController1) {
+       return robotController.getFittest() < robotController1.getFittest() ? robotController : robotController1;
     }
 }
